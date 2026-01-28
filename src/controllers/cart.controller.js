@@ -5,7 +5,7 @@ exports.createCart = async (req, res) => {
   try {
     const { user_id } = req.body;
 
-    // prevent duplicate cart per user
+    // prevent duplicate cart per userr
     const existing = await Cart.findOne({ where: { user_id } });
     if (existing) {
       return res
