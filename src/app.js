@@ -37,6 +37,8 @@ app.get("/categories-add", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "CategoriesAdd.html"));
 });
 
+//-------frontend page routes end-------
+
 // auth routes
 app.use("/api/auth", require("./routes/auth.routes"));
 
