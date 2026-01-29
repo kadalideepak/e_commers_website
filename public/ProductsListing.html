@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Products Listing</title>
+    <!-- Shared CSS / meta will be injected by header.js -->
+    <script src="/js/header.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Sidebar (loaded from partial) -->
+        <div id="sidebar"></div>
+
+        <!-- Main Content -->
+        <div class="col-md-10 p-4">
+          <!-- Top bar -->
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4>Products Listing</h4>
+            <button class="btn btn-secondary">Back</button>
+          </div>
+
+          <!-- Create Button -->
+          <div class="d-flex justify-content-end mb-3">
+            <button class="btn btn-primary">Create</button>
+          </div>
+
+          <!-- Table -->
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead class="table-light">
+                <tr>
+                  <th>S.No</th>
+                  <th>Seller_id</th>
+                  <th>Category_id</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>Product one</td>
+                  <td>abcdefg</td>
+                  <td>500</td>
+                  <td>10</td>
+                  <td>Active</td>
+                  <td>
+                    <button class="btn btn-sm btn-outline-primary">Edit</button>
+                    <button class="btn btn-sm btn-outline-danger">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>3</td>
+                  <td>Product two</td>
+                  <td>abcdefg</td>
+                  <td>1000</td>
+                  <td>20</td>
+                  <td>Inactive</td>
+                  <td>
+                    <button class="btn btn-sm btn-outline-primary">Edit</button>
+                    <button class="btn btn-sm btn-outline-danger">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>4</td>
+                  <td>Product three</td>
+                  <td>abcdefg</td>
+                  <td>1500</td>
+                  <td>50</td>
+                  <td>Active</td>
+                  <td>
+                    <button class="btn btn-sm btn-outline-primary">Edit</button>
+                    <button class="btn btn-sm btn-outline-danger">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shared JS scripts + sidebar loader -->
+    <script src="/js/footer.js"></script>
+    <script src="/js/layout.js"></script>
+  </body>
+</html>

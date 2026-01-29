@@ -1,7 +1,41 @@
 const express = require("express");
+const path = require("path");
 const app = express();
 
 app.use(express.json());
+
+// Serve static frontend files from /public
+app.use(express.static(path.join(__dirname, "..", "public")));
+
+// ---------- FRONTEND PAGE ROUTES ----------
+
+// Home page
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "index.html"));
+});
+
+// dashboard
+app.get("/dashboard", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "dashboard.html"));
+});
+
+// Products listing and add pages
+app.get("/products", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "ProductsListing.html"));
+});
+
+app.get("/products-add", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "ProductsAdd.html"));
+});
+
+// Categories listing and add pages
+app.get("/categories", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "CategoriesListing.html"));
+});
+
+app.get("/categories-add", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "CategoriesAdd.html"));
+});
 
 // auth routes
 app.use("/api/auth", require("./routes/auth.routes"));

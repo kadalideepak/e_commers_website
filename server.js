@@ -19,6 +19,15 @@ const PORT = process.env.PORT || 5000;
       console.log(`Server running on port ${PORT}`);
     });
   } catch (error) {
-    console.error("Unable to connect to DB:", error);
+    // Show a clean error message without full stack trace
+    console.error("❌ Unable to connect to database.");
+    console.error(
+      "Reason:",
+      error?.original?.code || error?.message || "Unknown error",
+    );
+    console.error(
+      "Please check your DB server, credentials (DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD) and try again.",
+    );
+    process.exit(1);
   }
 })();

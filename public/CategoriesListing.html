@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Categories Listing</title>
+    <!-- Shared CSS / meta will be injected by header.js -->
+    <script src="/js/header.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Sidebar (loaded from partial) -->
+        <div id="sidebar"></div>
+
+        <!-- Main Content -->
+        <div class="col-md-10 p-4">
+          <!-- Top bar -->
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4>Categories Listing</h4>
+            <button class="btn btn-secondary">Back</button>
+          </div>
+
+          <!-- Create Button -->
+          <div class="d-flex justify-content-end mb-3">
+            <button class="btn btn-primary">Create</button>
+          </div>
+
+          <!-- Table -->
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead class="table-light">
+                <tr>
+                  <th>S.No</th>
+                  <th>Name</th>
+                  <th>Is Active</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Product One</td>
+                  <td>True</td>
+                  <td>
+                    <button class="btn btn-sm btn-outline-primary">Edit</button>
+                    <button class="btn btn-sm btn-outline-danger">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>2</td>
+                  <td>Product Two</td>
+                  <td>False</td>
+                  <td>
+                    <button class="btn btn-sm btn-outline-primary">Edit</button>
+                    <button class="btn btn-sm btn-outline-danger">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>3</td>
+                  <td>Product Three</td>
+                  <td>True</td>
+                  <td>
+                    <button class="btn btn-sm btn-outline-primary">Edit</button>
+                    <button class="btn btn-sm btn-outline-danger">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shared JS scripts + sidebar loader -->
+    <script src="/js/footer.js"></script>
+    <script src="/js/layout.js"></script>
+  </body>
+</html>
