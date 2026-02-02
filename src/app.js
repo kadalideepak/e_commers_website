@@ -14,6 +14,11 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "index.html"));
 });
 
+// register
+app.get("/register", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "register.html"));
+});
+
 // dashboard
 app.get("/dashboard", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "dashboard.html"));
@@ -35,6 +40,17 @@ app.get("/categories", (req, res) => {
 
 app.get("/categories-add", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "CategoriesAdd.html"));
+});
+
+// sellerProfile listing and add pages
+app.get("/sellerProfile", (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "..", "public", "sellerProfileListing.html"),
+  );
+});
+
+app.get("/sellerProfile-add", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "sellerProfileAdd.html"));
 });
 
 //-------frontend page routes end-------
