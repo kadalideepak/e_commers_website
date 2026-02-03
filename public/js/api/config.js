@@ -2,7 +2,7 @@
  * API configuration - Axios instance with base URL
  * All API calls use this instance for consistent base URL and interceptors
  */
-const API_BASE_URL = "http://127.0.0.1:5000";
+const API_BASE_URL = "http://127.0.0.1:6000";
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -29,5 +29,5 @@ apiClient.interceptors.response.use(
       localStorage.removeItem("user");
     }
     return Promise.reject(error);
-  }
+  },
 );
