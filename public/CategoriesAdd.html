@@ -19,23 +19,24 @@
           <!-- Form Card -->
           <div class="card">
             <div class="card-body">
-              <form>
+              <form id="categoryForm">
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <label class="form-label">Name</label>
                     <input
                       type="text"
                       class="form-control"
+                      id="categoryName"
                       placeholder="Enter name"
                     />
                   </div>
 
                   <div class="col-md-6">
                     <label class="form-label">Is Active</label>
-                    <select class="form-control">
-                      <option>Select</option>
-                      <option>True</option>
-                      <option>False</option>
+                    <select class="form-control" id="categoryIsActive">
+                      <option value="">Select</option>
+                      <option value="true">True</option>
+                      <option value="false">False</option>
                     </select>
                   </div>
                 </div>
@@ -79,5 +80,10 @@
     <!-- Shared JS scripts + sidebar loader -->
     <script src="/js/footer.js"></script>
     <script src="/js/layout.js"></script>
+    <!-- Axios + API and page logic -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/api/config.js"></script>
+    <script src="/js/api/categories.api.js"></script>
+    <script src="/js/pages/categories-add.js"></script>
   </body>
 </html>

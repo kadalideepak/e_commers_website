@@ -1,8 +1,11 @@
 /**
  * API configuration - Axios instance with base URL
  * All API calls use this instance for consistent base URL and interceptors
+ *
+ * Use the same origin as the frontend (protocol + host + port),
+ * so it works in dev and avoids unsafe/blocked ports.
  */
-const API_BASE_URL = "http://127.0.0.1:6000";
+const API_BASE_URL = window.location.origin;
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,

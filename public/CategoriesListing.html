@@ -35,43 +35,7 @@
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Product One</td>
-                  <td>True</td>
-                  <td>
-                    <button class="btn btn-sm btn-outline-primary">Edit</button>
-                    <button class="btn btn-sm btn-outline-danger">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>2</td>
-                  <td>Product Two</td>
-                  <td>False</td>
-                  <td>
-                    <button class="btn btn-sm btn-outline-primary">Edit</button>
-                    <button class="btn btn-sm btn-outline-danger">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>3</td>
-                  <td>Product Three</td>
-                  <td>True</td>
-                  <td>
-                    <button class="btn btn-sm btn-outline-primary">Edit</button>
-                    <button class="btn btn-sm btn-outline-danger">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
+              <tbody id="categoriesTableBody"></tbody>
             </table>
           </div>
         </div>
@@ -81,5 +45,10 @@
     <!-- Shared JS scripts + sidebar loader -->
     <script src="/js/footer.js"></script>
     <script src="/js/layout.js"></script>
+    <!-- Axios + API and page logic -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/api/config.js"></script>
+    <script src="/js/api/categories.api.js"></script>
+    <script src="/js/pages/categories-listing.js"></script>
   </body>
 </html>
