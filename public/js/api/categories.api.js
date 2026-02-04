@@ -45,4 +45,3 @@ const categoriesApi = {
     return apiClient.delete(`/api/categories/${id}`);
   },
 };
-
