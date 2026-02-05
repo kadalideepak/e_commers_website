@@ -1,5 +1,5 @@
 /**
- * Seller Profile API - list, create, update, delete
+ * Seller Profile API - list, create, update, delete seller profiles
  * Uses apiClient from config.js
  */
 const sellerProfileApi = {
@@ -9,15 +9,21 @@ const sellerProfileApi = {
   list() {
     return apiClient.get("/api/seller-profiles");
   },
+  /**
+   * Get approved seller profiles
+   */
+  getApproved() {
+    return apiClient.get("/api/seller-profiles/status/APPROVED");
+  },
 
   /**
    * Create a new seller profile
    * @param {{
-   * user_id:number,
-   * shop_name:string,
-   * gst_number:string,
-   * commission_percentage:number,
-   * status:string
+   *  user_id: number|string,
+   *  shop_name: string,
+   *  gst_number: string,
+   *  commission_percentage: number|string,
+   *  status: string
    * }} data
    */
   create(data) {
@@ -35,6 +41,7 @@ const sellerProfileApi = {
   /**
    * Update seller profile
    * @param {number|string} id
+   * @param {Object} data
    */
   update(id, data) {
     return apiClient.put(`/api/seller-profiles/${id}`, data);

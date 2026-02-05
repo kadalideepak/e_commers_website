@@ -14,62 +14,81 @@
         <!-- Main Content -->
         <div class="col-md-10 p-4">
           <!-- Page Title -->
-          <h4 class="mb-4">Seller Profile</h4>
+          <h4 class="mb-4">Seller Profile Add</h4>
 
           <!-- Form Card -->
           <div class="card">
             <div class="card-body">
-              <form>
+              <form id="categoryForm">
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <label class="form-label">User ID</label>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="Enter user id"
+                      id="userId"
+                      placeholder="Enter Id"
                     />
                   </div>
-
-                                  <div class="row mb-3">
                   <div class="col-md-6">
                     <label class="form-label">Shope Name</label>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="Enter shope name"
+                      id="shopName"
+                      placeholder="shope name"
                     />
                   </div>
-
                   <div class="col-md-6">
                     <label class="form-label">GST Number</label>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="Enter gst number"
+                      id="gstNumber"
+                      placeholder="gst number"
                     />
                   </div>
-                </div>
-
                   <div class="col-md-6">
                     <label class="form-label">Commission Percentage</label>
                     <input
-                      type="number"
+                      type="text"
                       class="form-control"
-                      placeholder="Product price"
+                      id="commissionPercentage"
+                      placeholder="commission percentage"
                     />
                   </div>
-                </div>
 
-
-                  <div class="col-md-4">
+                  <div class="col-md-6">
                     <label class="form-label">Status</label>
-                    <select class="form-control">
-                      <option>Pending</option>
-                      <option>Approved</option>
-                      <option>Rejected</option>
+                    <select class="form-control" id="categoryIsActive">
+                      <option value="">Select</option>
+                      <option value="PENDING">PENDING</option>
+                      <option value="APPROVED">APPROVED</option>
+                      <option value="REJECTED">REJECTED</option>
                     </select>
                   </div>
                 </div>
+
+                <!-- <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Status</label>
+                    <select class="form-control">
+                      <option>Select</option>
+                      <option>Active</option>
+                      <option>Inactive</option>
+                    </select>
+                  </div> -->
+
+                <!-- <div class="col-md-6">
+                    <label class="form-label">Image</label>
+                    <input type="file" class="form-control" />
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <label class="form-label">Description</label>
+                  <textarea class="form-control" rows="3"></textarea>
+                </div> -->
 
                 <!-- Buttons -->
                 <div class="text-end">
@@ -89,5 +108,11 @@
     <!-- Shared JS scripts + sidebar loader -->
     <script src="/js/footer.js"></script>
     <script src="/js/layout.js"></script>
+
+    <!-- Axios + API and page logic -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/api/config.js"></script>
+    <script src="/js/api/sellerProfile.api.js"></script>
+    <script src="/js/pages/sellerProfile-add.js"></script>
   </body>
 </html>

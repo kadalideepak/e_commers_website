@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Seller Listing</title>
+    <title>Seller Profile Listing</title>
+    <!-- Shared CSS / meta will be injected by header.js -->
     <script src="/js/header.js"></script>
   </head>
   <body>
     <div class="container-fluid">
       <div class="row">
-        <!-- Sidebar -->
+        <!-- Sidebar (loaded from partial) -->
         <div id="sidebar"></div>
 
         <!-- Main Content -->
@@ -21,7 +22,6 @@
           <!-- Create Button -->
           <div class="d-flex justify-content-end mb-3">
             <a href="/sellerProfile-add" class="btn btn-primary">Create</a>
-            <!-- <button class="btn btn-primary">Create</button> -->
           </div>
 
           <!-- Table -->
@@ -30,69 +30,29 @@
               <thead class="table-light">
                 <tr>
                   <th>S.No</th>
-                  <th>User_id</th>
-                  <th>Shope_Name</th>
-                  <th>GST_Number</th>
-                  <th>Commission_Percentage</th>
+                  <th>User ID</th>
+                  <th>Shope Name</th>
+                  <th>GST Number</th>
+                  <th>Commission Percentage</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>Deepak Electronics</td>
-                  <td>GST123456</td>
-                  <td>10%</td>
-                  <td>Pending</td>
-                  <td>
-                    <button class="btn btn-sm btn-outline-primary">Edit</button>
-                    <button class="btn btn-sm btn-outline-danger">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>2</td>
-                  <td>2</td>
-                  <td>Krishna Computers</td>
-                  <td>GST123457</td>
-                  <td>15%</td>
-                  <td>Approved</td>
-                  <td>
-                    <button class="btn btn-sm btn-outline-primary">Edit</button>
-                    <button class="btn btn-sm btn-outline-danger">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>3</td>
-                  <td>3</td>
-                  <td>Kishore Mobiles</td>
-                  <td>GST123458</td>
-                  <td>20%</td>
-                  <td>Rejected</td>
-                  <td>
-                    <button class="btn btn-sm btn-outline-primary">Edit</button>
-                    <button class="btn btn-sm btn-outline-danger">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
+              <tbody id="categoriesTableBody"></tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
 
-    <!--js files-->
     <!-- Shared JS scripts + sidebar loader -->
     <script src="/js/footer.js"></script>
     <script src="/js/layout.js"></script>
+
+    <!-- Axios + API and page logic -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/api/config.js"></script>
+    <script src="/js/api/sellerProfile.api.js"></script>
+    <script src="/js/pages/sellerProfile-listing.js"></script>
   </body>
 </html>

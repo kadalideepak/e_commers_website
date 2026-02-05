@@ -2,82 +2,74 @@
  * Seller Profile listing page logic.
  */
 (function () {
-  const tbody = document.querySelector("tbody");
+  const tbody = document.getElementById("categoriesTableBody");
   if (!tbody) return;
 
-  function renderRows(sellers) {
+  function renderRows(list) {
     tbody.innerHTML = "";
 
-    if (!Array.isArray(sellers) || sellers.length === 0) {
+    if (!Array.isArray(list) || list.length === 0) {
       const tr = document.createElement("tr");
       const td = document.createElement("td");
       td.colSpan = 7;
-      td.textContent = "No seller profiles found.";
       td.className = "text-center";
+      td.textContent = "No seller profiles found.";
       tr.appendChild(td);
       tbody.appendChild(tr);
       return;
     }
 
-    sellers.forEach((s, index) => {
+    list.forEach((item, index) => {
       const tr = document.createElement("tr");
 
       tr.innerHTML = `
         <td>${index + 1}</td>
-        <td>${s.user_id}</td>
-        <td>${s.shop_name}</td>
-        <td>${s.gst_number}</td>
-        <td>${s.commission_percentage}%</td>
-        <td>${s.status}</td>
+        <td>${item.user_id ?? ""}</td>
+        <td>${item.shop_name ?? ""}</td>
+        <td>${item.gst_number ?? ""}</td>
+        <td>${item.commission_percent ?? ""}</td>
+        <td>${item.status ?? ""}</td>
         <td>
-          <button class="btn btn-sm btn-outline-primary me-2 edit-btn" data-id="${s.id}">
-            Edit
-          </button>
-          <button class="btn btn-sm btn-outline-danger delete-btn" data-id="${s.id}">
-            Delete
-          </button>
+          <button class="btn btn-sm btn-outline-primary me-2 edit-btn">Edit</button>
+          <button class="btn btn-sm btn-outline-danger delete-btn">Delete</button>
         </td>
       `;
 
-      tbody.appendChild(tr);
-    });
-
-    // Edit
-    tbody.querySelectorAll(".edit-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        window.location.href = `/sellerProfile-add?id=${btn.dataset.id}`;
+      tr.querySelector(".edit-btn").addEventListener("click", () => {
+        window.location.href = `/sellerProfile-add?id=${item.id}`;
       });
-    });
 
-    // Delete
-    tbody.querySelectorAll(".delete-btn").forEach((btn) => {
-      btn.addEventListener("click", async () => {
-        if (!confirm("Are you sure you want to delete this seller profile?"))
-          return;
+      tr.querySelector(".delete-btn").addEventListener("click", async () => {
+        const ok = confirm(
+          `Are you sure you want to delete "${item.shop_name}"?`,
+        );
+        if (!ok) return;
 
         try {
-          await sellerProfileApi.remove(btn.dataset.id);
+          await sellerProfileApi.remove(item.id);
           loadSellerProfiles();
         } catch (error) {
-          console.error("Failed to delete seller profile:", error);
+          console.error("Delete failed:", error);
           alert(
             error?.response?.data?.message ||
-              "Failed to delete seller profile. Please try again.",
+              "Failed to delete seller profile.",
           );
         }
       });
+
+      tbody.appendChild(tr);
     });
   }
 
   async function loadSellerProfiles() {
     try {
-      const response = await sellerProfileApi.list();
-      renderRows(response.data);
+      const res = await sellerProfileApi.list();
+      renderRows(res.data);
     } catch (error) {
-      console.error("Failed to load seller profiles:", error);
+      console.error("Load failed:", error);
+      renderRows([]);
       alert(
-        error?.response?.data?.message ||
-          "Failed to load seller profiles. Please try again.",
+        error?.response?.data?.message || "Failed to load seller profiles.",
       );
     }
   }

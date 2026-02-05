@@ -22,21 +22,19 @@
               <form>
                 <div class="row mb-3">
                   <div class="col-md-6">
-                    <label class="form-label">Seller ID</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Enter seller id"
-                    />
+                    <label class="form-label">Seller</label>
+                    <select class="form-control" id="sellerSelect">
+                      <option value="">Select</option>
+                    </select>
                   </div>
 
                   <div class="col-md-6">
-                    <label class="form-label">Category ID</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Enter category id"
-                    />
+                    <label class="form-label">Category</label>
+                    <select class="form-control">
+                      <option>Select</option>
+                      <option>Active</option>
+                      <option>Inactive</option>
+                    </select>
                   </div>
                 </div>
 
@@ -111,7 +109,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/js/api/config.js"></script>
+
+    <script src="/js/api/sellerProfile.api.js"></script>
+    <script src="/js/api/categories.api.js"></script>
     <script src="/js/api/products.api.js"></script>
+
     <script src="/js/pages/products-add.js"></script>
   </body>
 </html>

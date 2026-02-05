@@ -1,20 +1,13 @@
 /**
  * Seller Profile Add/Edit page logic.
- * - ?id=... → Edit
- * - No id → Create
+ * - If URL has ?id=... -> load seller profile and UPDATE
+ * - Otherwise -> CREATE
  */
 (function () {
-  const form = document.querySelector("form");
+  const form = document.getElementById("categoryForm");
   if (!form) return;
 
-  const userIdInput = form.querySelector('input[placeholder="Enter user id"]');
-  const shopNameInput = form.querySelector(
-    'input[placeholder="Enter shope name"], input[placeholder="Enter shop name"]',
-  );
-  const gstInput = form.querySelector('input[placeholder="Enter gst number"]');
-  const commissionInput = form.querySelector('input[type="number"]');
-  const statusSelect = form.querySelector("select");
-
+  const inputs = form.querySelectorAll("input, select");
   const pageTitle = document.querySelector("h4.mb-4");
   const submitBtn = form.querySelector('button[type="submit"]');
 
@@ -27,38 +20,35 @@
 
     try {
       const res = await sellerProfileApi.getById(sellerId);
-      const s = res.data;
+      const data = res.data;
 
-      userIdInput.value = s.user_id ?? "";
-      shopNameInput.value = s.shop_name ?? "";
-      gstInput.value = s.gst_number ?? "";
-      commissionInput.value = s.commission_percentage ?? "";
-      statusSelect.value = s.status ?? "Pending";
+      inputs[0].value = data.user_id ?? "";
+      inputs[1].value = data.shop_name ?? "";
+      inputs[2].value = data.gst_number ?? "";
+      inputs[3].value = data.commission_percent ?? "";
+      inputs[4].value = data.status ?? "";
 
       pageTitle.textContent = "Seller Profile Edit";
       submitBtn.textContent = "Update";
     } catch (error) {
       console.error("Failed to load seller profile:", error);
-      alert(
-        error?.response?.data?.message ||
-          "Failed to load seller profile. Please try again.",
-      );
+      alert(error?.response?.data?.message || "Failed to load seller profile.");
     }
   }
 
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const data = {
-      user_id: Number(userIdInput.value),
-      shop_name: shopNameInput.value.trim(),
-      gst_number: gstInput.value.trim(),
-      commission_percentage: Number(commissionInput.value),
-      status: statusSelect.value,
+    const payload = {
+      user_id: inputs[0].value.trim(),
+      shop_name: inputs[1].value.trim(),
+      gst_number: inputs[2].value.trim(),
+      commission_percent: inputs[3].value.trim(),
+      status: inputs[4].value,
     };
 
-    if (!data.shop_name) {
-      alert("Please enter shop name.");
+    if (!payload.user_id || !payload.shop_name || !payload.status) {
+      alert("Please fill all required fields.");
       return;
     }
 
@@ -67,19 +57,16 @@
 
     try {
       if (isEditMode) {
-        await sellerProfileApi.update(sellerId, data);
+        await sellerProfileApi.update(sellerId, payload);
         alert("Seller profile updated successfully.");
       } else {
-        await sellerProfileApi.create(data);
+        await sellerProfileApi.create(payload);
         alert("Seller profile created successfully.");
       }
       window.location.href = "/sellerProfile";
     } catch (error) {
       console.error("Failed to save seller profile:", error);
-      alert(
-        error?.response?.data?.message ||
-          "Failed to save seller profile. Please try again.",
-      );
+      alert(error?.response?.data?.message || "Failed to save seller profile.");
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = isEditMode ? "Update" : "Submit";
